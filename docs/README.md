@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /hero.svg
+heroImage: /book.png
 heroText: 交接文档
 tagline: 王赛个人交接文档（2021.12.14-2021.12.18）
 actionText: 快速上手 →
