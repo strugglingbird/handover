@@ -15,7 +15,9 @@
 
 [7.rancher中nginx-ingress的配置获取真实IP地址](./07/)
 
-[8.rancher更新域名证书](./10/)
+[8.rancher更新域名证书(应用证书)](./10/)
+
+[9.rancher更新域名证书(k8s.ecolovo.com)](./11/)
 
 ## 二、阿里云运维手册
 
