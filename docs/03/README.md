@@ -11,9 +11,11 @@
 
 [5.rancher安装nfs-client-provisioner动态提供nfs存储](./05/)
 
-[6.rancher的Ingress的文件大小上传限制配置](./06)
+[6.rancher的Ingress的文件大小上传限制配置](./06/)
 
-[7.rancher中nginx-ingress的配置获取真实IP地址](./07)
+[7.rancher中nginx-ingress的配置获取真实IP地址](./07/)
+
+[8.rancher更新域名证书](./10/)
 
 ## 二、阿里云运维手册
 
