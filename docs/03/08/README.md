@@ -1,4 +1,4 @@
-# K8S掌握要点
+# 容器服务Kubernetes的使用
 
 打开阿里云选择【`容器服务Kubernetes版`】并进入
 
