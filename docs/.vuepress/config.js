@@ -16,6 +16,7 @@ module.exports = {
         // "GitHub"/"GitLab"/"Bitbucket" 其中之一，或是 "Source"。
         repoLabel: 'GitHub',
         sidebar: 'auto',
+        sidebarDepth: 3,
         nav: [
             {text: '首页', link: '/'},
             {text: '服务器相关', link: '/01/'},
@@ -23,6 +24,7 @@ module.exports = {
             {text: '运维相关', link: '/03/'},
             {text: '其他', link: '/04/'},
         ],
-        displayAllHeaders: false,
+        displayAllHeaders: true,
+        smoothScroll: true
     },
 }
