@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>益客云项目入门开发手册 | 交接文档</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/handover/hero.svg">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/handover/assets/css/0.styles.f8d78339.css" as="style"><link rel="preload" href="/handover/assets/js/app.0bd4e087.js" as="script"><link rel="preload" href="/handover/assets/js/2.40eece3a.js" as="script"><link rel="preload" href="/handover/assets/js/25.53623594.js" as="script"><link rel="prefetch" href="/handover/assets/js/10.272653f1.js"><link rel="prefetch" href="/handover/assets/js/11.742c26f2.js"><link rel="prefetch" href="/handover/assets/js/12.18bc48d7.js"><link rel="prefetch" href="/handover/assets/js/13.c69daf34.js"><link rel="prefetch" href="/handover/assets/js/14.f032ed61.js"><link rel="prefetch" href="/handover/assets/js/15.62f784ac.js"><link rel="prefetch" href="/handover/assets/js/16.eb5b5be5.js"><link rel="prefetch" href="/handover/assets/js/17.f8650417.js"><link rel="prefetch" href="/handover/assets/js/18.dfedbf20.js"><link rel="prefetch" href="/handover/assets/js/19.f7e0f19b.js"><link rel="prefetch" href="/handover/assets/js/20.3ea0f030.js"><link rel="prefetch" href="/handover/assets/js/21.6b415d81.js"><link rel="prefetch" href="/handover/assets/js/22.fe44f683.js"><link rel="prefetch" href="/handover/assets/js/23.35da1f9e.js"><link rel="prefetch" href="/handover/assets/js/24.e4da81e8.js"><link rel="prefetch" href="/handover/assets/js/26.27a315c6.js"><link rel="prefetch" href="/handover/assets/js/27.2c96ed45.js"><link rel="prefetch" href="/handover/assets/js/28.7e031f1e.js"><link rel="prefetch" href="/handover/assets/js/29.e8295554.js"><link rel="prefetch" href="/handover/assets/js/3.dd08ab77.js"><link rel="prefetch" href="/handover/assets/js/30.7ea85f4b.js"><link rel="prefetch" href="/handover/assets/js/31.40c66dac.js"><link rel="prefetch" href="/handover/assets/js/32.94771c91.js"><link rel="prefetch" href="/handover/assets/js/33.baa8703b.js"><link rel="prefetch" href="/handover/assets/js/34.2fbd4503.js"><link rel="prefetch" href="/handover/assets/js/35.49bb5a1f.js"><link rel="prefetch" href="/handover/assets/js/36.ca6640bf.js"><link rel="prefetch" href="/handover/assets/js/37.dc0cb2f1.js"><link rel="prefetch" href="/handover/assets/js/4.a98ae983.js"><link rel="prefetch" href="/handover/assets/js/5.3222be7e.js"><link rel="prefetch" href="/handover/assets/js/6.2f528cd8.js"><link rel="prefetch" href="/handover/assets/js/7.e7c21d4d.js"><link rel="prefetch" href="/handover/assets/js/8.dac3de63.js"><link rel="prefetch" href="/handover/assets/js/9.50eac6c0.js">
+    <link rel="stylesheet" href="/handover/assets/css/0.styles.f8d78339.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/handover/" class="home-link router-link-active"><!----> <span class="site-name">交接文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link router-link-active">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link router-link-active">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>益客云项目入门开发手册</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/handover/04/04/#_1、基本要求" class="sidebar-link">1、基本要求</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/04/04/#_1-1-硬件环境" class="sidebar-link">1.1 硬件环境</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_1-2-软件环境" class="sidebar-link">1.2 软件环境</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_1-3-掌握技能" class="sidebar-link">1.3 掌握技能</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_1-4-代码要求" class="sidebar-link">1.4 代码要求</a></li></ul></li><li><a href="/handover/04/04/#_2、开发环境搭建" class="sidebar-link">2、开发环境搭建</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/04/04/#_2-1-下载代码" class="sidebar-link">2.1 下载代码</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_2-2-配置maven配置文件" class="sidebar-link">2.2 配置maven配置文件</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_2-3-安装启动nacos" class="sidebar-link">2.3 安装启动nacos</a></li></ul></li><li><a href="/handover/04/04/#_3、项目的启动" class="sidebar-link">3、项目的启动</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/04/04/#_3-2-启动基础资料服务-system" class="sidebar-link">3.2 启动基础资料服务(system)</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_3-2-启动统一认证服务-auth-server" class="sidebar-link">3.2 启动统一认证服务(auth-server)</a></li><li class="sidebar-sub-header"><a href="/handover/04/04/#_3-3-启动统一网管服务-gateway" class="sidebar-link">3.3 启动统一网管服务(gateway)</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="益客云项目入门开发手册"><a href="#益客云项目入门开发手册" class="header-anchor">#</a> 益客云项目入门开发手册</h1> <h2 id="_1、基本要求"><a href="#_1、基本要求" class="header-anchor">#</a> 1、基本要求</h2> <h3 id="_1-1-硬件环境"><a href="#_1-1-硬件环境" class="header-anchor">#</a> 1.1 硬件环境</h3> <ul><li>操作系统要求: Windows/MacOS/Linux</li> <li>最低硬件配置: 4核16G + SSD(128G)</li></ul> <h3 id="_1-2-软件环境"><a href="#_1-2-软件环境" class="header-anchor">#</a> 1.2 软件环境</h3> <ul><li>Jdk1.8及以上版本</li> <li>Maven3.0及以上版本</li> <li>Docker18.xx(包含docker-compose)及以上版本</li> <li>Git2.31.0及以上版本</li> <li>Idea2020.1及以上版本</li> <li>Redis6.2.3及以上版本</li> <li>Navicat12.xx及以上版本</li></ul> <h3 id="_1-3-掌握技能"><a href="#_1-3-掌握技能" class="header-anchor">#</a> 1.3 掌握技能</h3> <ul><li>可以熟练使用java8的<code>lambda</code>表达式</li> <li>熟练使用spring-boot项目开发</li> <li>熟悉spring cloud的基本概念以及spring cloud alibaba的基本概念，并能够区分差异</li> <li>熟悉基本的linux命令</li> <li>熟悉基本的docker命令并能够编写基本的Dockerfile和docker-compose文件代码</li> <li>熟悉基本的git命令并且能够理解git的基本原理</li> <li>熟悉maven的基本命令和基本用法，并对maven的包管理依赖、镜像拉取流程能有基本的了解</li> <li>熟悉swagger-ui代码文档的使用</li> <li>熟练掌握对mysql/oracle的使用</li> <li>熟练使用mybatis以及mybatis-plus的使用，并理解其概念以及它们之间的关系</li> <li>熟练使用idea以及Lombok、Mybatis等关开发插件的安装和使用</li></ul> <h3 id="_1-4-代码要求"><a href="#_1-4-代码要求" class="header-anchor">#</a> 1.4 代码要求</h3> <ul><li>能够严格遵守《阿里巴巴java开发手册》的规范</li> <li>代码命名不要有歧义</li> <li>复杂的代码一定要注上作者姓名、时间以及含义</li></ul> <h2 id="_2、开发环境搭建"><a href="#_2、开发环境搭建" class="header-anchor">#</a> 2、开发环境搭建</h2> <blockquote><p>TIPS:</p> <p>以下流程的操作均建立在读者已符合第一章节的基本要求并且完成软件环境的安装</p> <p>磨刀不误砍柴工，如果对上述要求还不熟悉的话请先不要着急研究和学习项目的源码以及环境的搭建，这样反而会欲速则不达，可以先自行去百度进行查阅了解，再回来继续跟进以下步骤。</p></blockquote> <h3 id="_2-1-下载代码"><a href="#_2-1-下载代码" class="header-anchor">#</a> 2.1 下载代码</h3> <h4 id="_2-1-1-注册coding账号"><a href="#_2-1-1-注册coding账号" class="header-anchor">#</a> 2.1.1 注册coding账号</h4> <p>请先进入coding官网<a href="https://e.coding.net/register" target="_blank" rel="noopener noreferrer">注册页面<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，填写信息(团队名称填写<code>ecolovo</code>)完成注册和团队的加入以及项目的加入成为项目的开发者。</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqng739lbaj31l40u0hdt.jpg" alt="image-20210519084936655"></p> <h4 id="_2-1-2-拉取代吗"><a href="#_2-1-2-拉取代吗" class="header-anchor">#</a> 2.1.2  拉取代吗</h4> <p>进入<a href="https://ecolovo.coding.net/p/ecolovo-cloud/d/ecolovo-cloud/git" target="_blank" rel="noopener noreferrer">益客微服务平台<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>项目后，点击<code>克隆</code>按钮完成项目地址的复制</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqngb00bcfj32ek0u07e9.jpg" alt="image-20210519085325772"></p> <p>代开本机的命令行窗口输入以下代码完成项目的git下载</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">git</span> clone https://e.coding.net/ecolovo/ecolovo-cloud.git
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p>TIPS:</p> <p>项目的模块介绍请细看项目的<strong>Readme</strong>文件</p></blockquote> <h3 id="_2-2-配置maven配置文件"><a href="#_2-2-配置maven配置文件" class="header-anchor">#</a> 2.2 配置maven配置文件</h3> <h4 id="_2-2-1-找到你本机maven的包下载目录-一般都是-m2名称的目录"><a href="#_2-2-1-找到你本机maven的包下载目录-一般都是-m2名称的目录" class="header-anchor">#</a> 2.2.1 找到你本机maven的包下载目录，一般都是<code>.m2</code>名称的目录</h4> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqngv5ye38j30so0663z1.jpg" alt="image-20210519091248776"></p> <h4 id="_2-2-2-创建并编辑settings-xml配置文件"><a href="#_2-2-2-创建并编辑settings-xml配置文件" class="header-anchor">#</a> 2.2.2 创建并编辑settings.xml配置文件</h4> <p>进入上述目录后会有一个名为repository的目录，该目录下就是存储maven项目所有依赖的jar包及pom文件，在该目录的同级下创建一个<code>settings.xml</code>名称的文件，用文本编辑工具(Sublime Text)打开，并将以下代码复制保存。</p> <div class="language-xml line-numbers-mode"><pre class="language-xml"><code><span class="token prolog">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="token comment">&lt;!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+&quot;License&quot;); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+&quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+--&gt;</span>
+
+<span class="token comment">&lt;!--
+ | This is the configuration file for Maven. It can be specified at two levels:
+ |
+ |  1. User Level. This settings.xml file provides configuration for a single user,
+ |                 and is normally provided in ${user.home}/.m2/settings.xml.
+ |
+ |                 NOTE: This location can be overridden with the CLI option:
+ |
+ |                 -s /path/to/user/settings.xml
+ |
+ |  2. Global Level. This settings.xml file provides configuration for all Maven
+ |                 users on a machine (assuming they're all using the same Maven
+ |                 installation). It's normally provided in
+ |                 ${maven.conf}/settings.xml.
+ |
+ |                 NOTE: This location can be overridden with the CLI option:
+ |
+ |                 -gs /path/to/global/settings.xml
+ |
+ | The sections in this sample file are intended to give you a running start at
+ | getting the most out of your Maven installation. Where appropriate, the default
+ | values (values used when the setting is not specified) are provided.
+ |
+ |--&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">&quot;</span></span>
+          <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">&quot;</span></span>
+          <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- localRepository
+   | The path to the local repository maven will use to store artifacts.
+   |
+   | Default: ${user.home}/.m2/repository
+  &lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;
+  --&gt;</span>
+
+  <span class="token comment">&lt;!-- interactiveMode
+   | This will determine whether maven prompts you when it needs input. If set to false,
+   | maven will use a sensible default value, perhaps based on some other setting, for
+   | the parameter in question.
+   |
+   | Default: true
+  &lt;interactiveMode&gt;true&lt;/interactiveMode&gt;
+  --&gt;</span>
+
+  <span class="token comment">&lt;!-- offline
+   | Determines whether maven should attempt to connect to the network when executing a build.
+   | This will have an effect on artifact downloads, artifact deployment, and others.
+   |
+   | Default: false
+  &lt;offline&gt;false&lt;/offline&gt;
+  --&gt;</span>
+
+  <span class="token comment">&lt;!-- pluginGroups
+   | This is a list of additional group identifiers that will be searched when resolving plugins by their prefix, i.e.
+   | when invoking a command line like &quot;mvn prefix:goal&quot;. Maven will automatically add the group identifiers
+   | &quot;org.apache.maven.plugins&quot; and &quot;org.codehaus.mojo&quot; if these are not already contained in the list.
+   |--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginGroups</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- pluginGroup
+     | Specifies a further group identifier to use for plugin lookup.
+    &lt;pluginGroup&gt;com.your.plugins&lt;/pluginGroup&gt;
+    --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginGroups</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- proxies
+   | This is a list of proxies which can be used on this machine to connect to the network.
+   | Unless otherwise specified (by system property or command-line switch), the first proxy
+   | specification in this list marked as active will be used.
+   |--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>proxies</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- proxy
+     | Specification for one proxy, to be used in connecting to the network.
+     |
+    &lt;proxy&gt;
+      &lt;id&gt;optional&lt;/id&gt;
+      &lt;active&gt;true&lt;/active&gt;
+      &lt;protocol&gt;http&lt;/protocol&gt;
+      &lt;username&gt;proxyuser&lt;/username&gt;
+      &lt;password&gt;proxypass&lt;/password&gt;
+      &lt;host&gt;proxy.host.net&lt;/host&gt;
+      &lt;port&gt;80&lt;/port&gt;
+      &lt;nonProxyHosts&gt;local.net|some.host.com&lt;/nonProxyHosts&gt;
+    &lt;/proxy&gt;
+    --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>proxies</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- servers
+   | This is a list of authentication profiles, keyed by the server-id used within the system.
+   | Authentication profiles can be used whenever maven must make a connection to a remote server.
+   |--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servers</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- server
+     | Specifies the authentication information to use when connecting to a particular server, identified by
+     | a unique name within the system (referred to by the 'id' attribute below).
+     |
+     | NOTE: You should either specify username/password OR privateKey/passphrase, since these pairings are
+     |       used together.
+     |
+    &lt;server&gt;
+      &lt;id&gt;deploymentRepo&lt;/id&gt;
+      &lt;username&gt;repouser&lt;/username&gt;
+      &lt;password&gt;repopwd&lt;/password&gt;
+    &lt;/server&gt;
+    --&gt;</span>
+
+    <span class="token comment">&lt;!-- Another sample, using keys to authenticate.
+    &lt;server&gt;
+      &lt;id&gt;siteServer&lt;/id&gt;
+      &lt;privateKey&gt;/path/to/private/key&lt;/privateKey&gt;
+      &lt;passphrase&gt;optional; leave empty if not used.&lt;/passphrase&gt;
+    &lt;/server&gt;
+    --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servers</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- mirrors
+   | This is a list of mirrors to be used in downloading artifacts from remote repositories.
+   |
+   | It works like this: a POM may declare a repository to use in resolving certain artifacts.
+   | However, this repository may have problems with heavy traffic at times, so people have mirrored
+   | it to several places.
+   |
+   | That repository definition will have a unique id, so we can create a mirror reference for that
+   | repository, to be used as an alternate download site. The mirror site will be the preferred
+   | server for that repository.
+   |--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrors</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- mirror
+     | Specifies a repository mirror site to use instead of a given repository. The repository that
+     | this mirror serves has an ID that matches the mirrorOf element of this mirror. IDs are used
+     | for inheritance and direct lookup purposes, and must be unique across the set of mirrors.
+     |
+    &lt;mirror&gt;
+      &lt;id&gt;mirrorId&lt;/id&gt;
+      &lt;mirrorOf&gt;repositoryId&lt;/mirrorOf&gt;
+      &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;
+      &lt;url&gt;http://my.repository.com/repo/path&lt;/url&gt;
+    &lt;/mirror&gt;
+     --&gt;</span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>alimaven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>aliyun maven<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://maven.aliyun.com/nexus/content/groups/public/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrors</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- profiles
+   | This is a list of profiles which can be activated in a variety of ways, and which can modify
+   | the build process. Profiles provided in the settings.xml are intended to provide local machine-
+   | specific paths and repository locations which allow the build to work in the local environment.
+   |
+   | For example, if you have an integration testing plugin - like cactus - that needs to know where
+   | your Tomcat instance is installed, you can provide a variable here such that the variable is
+   | dereferenced during the build process to configure the cactus plugin.
+   |
+   | As noted above, profiles can be activated in a variety of ways. One way - the activeProfiles
+   | section of this document (settings.xml) - will be discussed later. Another way essentially
+   | relies on the detection of a system property, either matching a particular value for the property,
+   | or merely testing its existence. Profiles can also be activated by JDK version prefix, where a
+   | value of '1.4' might activate a profile when the build is executed on a JDK version of '1.4.2_07'.
+   | Finally, the list of active profiles can be specified directly from the command line.
+   |
+   | NOTE: For profiles defined in the settings.xml, you are restricted to specifying only artifact
+   |       repositories, plugin repositories, and free-form properties to be used as configuration
+   |       variables for plugins in the POM.
+   |
+   |--&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- profile
+     | Specifies a set of introductions to the build process, to be activated using one or more of the
+     | mechanisms described above. For inheritance purposes, and to activate profiles via &lt;activatedProfiles/&gt;
+     | or the command line, profiles have to have an ID that is unique.
+     |
+     | An encouraged best practice for profile identification is to use a consistent naming convention
+     | for profiles, such as 'env-dev', 'env-test', 'env-production', 'user-jdcasey', 'user-brett', etc.
+     | This will make it more intuitive to understand what the set of introduced profiles is attempting
+     | to accomplish, particularly when you only have a list of profile id's for debug.
+     |
+     | This profile example uses the JDK version to trigger activation, and provides a JDK-specific repo.
+    &lt;profile&gt;
+      &lt;id&gt;jdk-1.4&lt;/id&gt;
+
+      &lt;activation&gt;
+        &lt;jdk&gt;1.4&lt;/jdk&gt;
+      &lt;/activation&gt;
+
+      &lt;repositories&gt;
+        &lt;repository&gt;
+          &lt;id&gt;jdk14&lt;/id&gt;
+          &lt;name&gt;Repository for JDK 1.4 builds&lt;/name&gt;
+          &lt;url&gt;http://www.myhost.com/maven/jdk14&lt;/url&gt;
+          &lt;layout&gt;default&lt;/layout&gt;
+          &lt;snapshotPolicy&gt;always&lt;/snapshotPolicy&gt;
+        &lt;/repository&gt;
+      &lt;/repositories&gt;
+    &lt;/profile&gt;
+    --&gt;</span>
+
+    <span class="token comment">&lt;!--
+     | Here is another profile, activated by the system property 'target-env' with a value of 'dev',
+     | which provides a specific path to the Tomcat instance. To use this, your plugin configuration
+     | might hypothetically look like:
+     |
+     | ...
+     | &lt;plugin&gt;
+     |   &lt;groupId&gt;org.myco.myplugins&lt;/groupId&gt;
+     |   &lt;artifactId&gt;myplugin&lt;/artifactId&gt;
+     |
+     |   &lt;configuration&gt;
+     |     &lt;tomcatLocation&gt;${tomcatPath}&lt;/tomcatLocation&gt;
+     |   &lt;/configuration&gt;
+     | &lt;/plugin&gt;
+     | ...
+     |
+     | NOTE: If you just wanted to inject this configuration whenever someone set 'target-env' to
+     |       anything, you could just leave off the &lt;value/&gt; inside the activation-property.
+     |
+    &lt;profile&gt;
+      &lt;id&gt;env-dev&lt;/id&gt;
+
+      &lt;activation&gt;
+        &lt;property&gt;
+          &lt;name&gt;target-env&lt;/name&gt;
+          &lt;value&gt;dev&lt;/value&gt;
+        &lt;/property&gt;
+      &lt;/activation&gt;
+
+      &lt;properties&gt;
+        &lt;tomcatPath&gt;/path/to/tomcat/instance&lt;/tomcatPath&gt;
+      &lt;/properties&gt;
+    &lt;/profile&gt;
+    --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token comment">&lt;!-- activeProfiles
+   | List of profiles that are active for all builds.
+   |
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;alwaysActiveProfile&lt;/activeProfile&gt;
+    &lt;activeProfile&gt;anotherAlwaysActiveProfile&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+  --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br><span class="line-number">239</span><br><span class="line-number">240</span><br><span class="line-number">241</span><br><span class="line-number">242</span><br><span class="line-number">243</span><br><span class="line-number">244</span><br><span class="line-number">245</span><br><span class="line-number">246</span><br><span class="line-number">247</span><br><span class="line-number">248</span><br><span class="line-number">249</span><br><span class="line-number">250</span><br><span class="line-number">251</span><br><span class="line-number">252</span><br><span class="line-number">253</span><br><span class="line-number">254</span><br><span class="line-number">255</span><br><span class="line-number">256</span><br><span class="line-number">257</span><br><span class="line-number">258</span><br><span class="line-number">259</span><br><span class="line-number">260</span><br><span class="line-number">261</span><br><span class="line-number">262</span><br><span class="line-number">263</span><br><span class="line-number">264</span><br></div></div><blockquote><p>TIPS:</p> <p>上述配置完成之后，请使用idea打开刚才下载的项目代码，idea会默认加载刚才配置的<code>setting.xml</code>配置文件将其作为maven的配置文件，这样等待一段时间后就会完成项目的包依赖加载，代码就不会出现编译报错的情况。</p></blockquote> <h3 id="_2-3-安装启动nacos"><a href="#_2-3-安装启动nacos" class="header-anchor">#</a> 2.3 安装启动nacos</h3> <blockquote><p>TIPS:</p> <p>nacos的安装有多种方式，下面我们简单介绍最常用的2种安装方式，不管哪一种安装方式都是基于官网的教程来指导安装，如果还不理解的话可以去<a href="https://nacos.io/zh-cn/index.html" target="_blank" rel="noopener noreferrer">nacos官网<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的<code>运维指南 -&gt; 部署手册</code>进行查阅。</p></blockquote> <h4 id="_2-3-1-通过下载二进制文件-启动程序-安装nacos-复杂-便于理解"><a href="#_2-3-1-通过下载二进制文件-启动程序-安装nacos-复杂-便于理解" class="header-anchor">#</a> 2.3.1 通过下载二进制文件(启动程序)安装nacos(复杂-便于理解)</h4> <p><strong>1.预备环境准备</strong></p> <p>Nacos 依赖 <a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/" target="_blank" rel="noopener noreferrer">Java<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 环境来运行。如果您是从代码开始构建并运行Nacos，还需要为此配置 <a href="https://maven.apache.org/index.html" target="_blank" rel="noopener noreferrer">Maven<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>环境，请确保是在以下版本环境中安装使用:</p> <ol><li>64 bit OS，支持 Linux/Unix/Mac/Windows，推荐选用 Linux/Unix/Mac。</li> <li>64 bit JDK 1.8+；<a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener noreferrer">下载<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> &amp; <a href="https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/" target="_blank" rel="noopener noreferrer">配置<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</li> <li>Maven 3.2.x+；<a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener noreferrer">下载<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> &amp; <a href="https://maven.apache.org/settings.html" target="_blank" rel="noopener noreferrer">配置<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</li></ol> <p><strong>2.下载源码或者安装包</strong></p> <p>你可以通过源码和发行包两种方式来获取 Nacos。</p> <p>从 Github 上下载源码方式</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">git</span> clone https://github.com/alibaba/nacos.git
+<span class="token builtin class-name">cd</span> nacos/
+mvn -Prelease-nacos -Dmaven.test.skip<span class="token operator">=</span>true clean <span class="token function">install</span> -U  
+<span class="token function">ls</span> -al distribution/target/
+
+// change the <span class="token variable">$version</span> to your actual path
+<span class="token builtin class-name">cd</span> distribution/target/nacos-server-<span class="token variable">$version</span>/nacos/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>下载编译后压缩包方式</p> <p>您可以从 <a href="https://github.com/alibaba/nacos/releases" target="_blank" rel="noopener noreferrer">最新稳定版本<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a> 下载 <code>nacos-server-$version.zip</code> 包。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>  <span class="token function">unzip</span> nacos-server-<span class="token variable">$version</span>.zip 或者 <span class="token function">tar</span> -xvf nacos-server-<span class="token variable">$version</span>.tar.gz
+  <span class="token builtin class-name">cd</span> nacos/bin
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>3.启动服务器</strong></p> <p>Linux/Unix/Mac</p> <p>启动命令(standalone代表着单机模式运行，非集群模式):</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sh startup.sh -m standalone
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>如果您使用的是ubuntu系统，或者运行脚本报错提示[[符号找不到，可尝试如下运行：</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>bash startup.sh -m standalone
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Windows</p> <p>启动命令(standalone代表着单机模式运行，非集群模式):</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>startup.cmd -m standalone
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>5.关闭服务器</strong></p> <p>Linux/Unix/Mac</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>sh shutdown.sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>Windows</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>shutdown.cmd
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>或者双击shutdown.cmd运行文件。</p> <h4 id="_2-3-2-通过docker-compose文件-基于docker-安装nacos-简单-便于开发"><a href="#_2-3-2-通过docker-compose文件-基于docker-安装nacos-简单-便于开发" class="header-anchor">#</a> 2.3.2 通过docker-compose文件(基于docker)安装nacos(简单-便于开发)</h4> <p><strong>操作步骤</strong></p> <ul><li><p>Clone 项目</p> <div class="language-powershell line-numbers-mode"><pre class="language-powershell"><code>git clone https:<span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>nacos<span class="token operator">-</span><span class="token function">group</span><span class="token operator">/</span>nacos<span class="token operator">-</span>docker<span class="token punctuation">.</span>git
+cd nacos<span class="token operator">-</span>docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div></li> <li><p>单机模式 MySQL8</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>docker-compose -f example/standalone-mysql-8.yaml up -d
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>Nacos 控制台</p> <p>link：http://127.0.0.1:8848/nacos/</p></li></ul> <h2 id="_3、项目的启动"><a href="#_3、项目的启动" class="header-anchor">#</a> 3、项目的启动</h2> <blockquote><p>TIPS:</p> <p>当你对上述的环境搭建完毕之后就可以来执行我们的最后的一步了，当然之前的所有准备都是为了这一步而来，所以特别要熟练对一些操作的基础概念的理解，以及这么做的目的。</p></blockquote> <ol><li>使用idea打开我们的项目代码，完成maven的依赖构建之后我们就可以清晰的看到项目的目录和层级了</li></ol> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqni0vt49cj31c10u0qjc.jpg" alt="image-20210519095253214"></p> <ol start="2"><li>在idea工具栏中将services配置出来</li></ol> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnispjh9gj31c10u0b29.jpg" alt="image-20210519101938401"></p> <ol start="3"><li>配置项目的启动项</li></ol> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnitup4tqj31c10u0dqp.jpg" alt="image-20210519102044490"></p> <p>下面里我们介绍一下项目3个基础服务(必须启动的服务)的启动</p> <h3 id="_3-2-启动基础资料服务-system"><a href="#_3-2-启动基础资料服务-system" class="header-anchor">#</a> 3.2 启动基础资料服务(system)</h3> <h4 id="_3-1-1-在idea工具栏中将services配置出来"><a href="#_3-1-1-在idea工具栏中将services配置出来" class="header-anchor">#</a> 3.1.1 在idea工具栏中将services配置出来</h4> <h4 id="_3-1-2-修改配置文件"><a href="#_3-1-2-修改配置文件" class="header-anchor">#</a> 3.1.2 修改配置文件</h4> <ol><li><p>指定环境变量</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqninz3gukj31c10u0wx2.jpg" alt="image-20210519101504722"></p></li> <li><p>修改redis和数据库链接地址</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqniph21ifj31c00u04ho.jpg" alt="image-20210519101632493"></p></li> <li><p>启动服务</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnj64my1mj31c00u0wzh.jpg" alt="image-20210519103232208"></p></li></ol> <h3 id="_3-2-启动统一认证服务-auth-server"><a href="#_3-2-启动统一认证服务-auth-server" class="header-anchor">#</a> 3.2 启动统一认证服务(auth-server)</h3> <ol><li><p>指定环境变量</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjabo0tmj31c00u0k7n.jpg" alt="image-20210519103634708"></p></li> <li><p>修改redis链接地址</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjawmhv6j31c00u018u.jpg" alt="image-20210519103708063"></p></li> <li><p>启动服务</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnj7uwdu6j31c00u0wza.jpg" alt="image-20210519103411677"></p></li></ol> <h3 id="_3-3-启动统一网管服务-gateway"><a href="#_3-3-启动统一网管服务-gateway" class="header-anchor">#</a> 3.3 启动统一网管服务(gateway)</h3> <ol><li><p>指定环境变量</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjcbhlzhj31c00u0tpo.jpg" alt="image-20210519103829018"></p></li> <li><p>修改redis链接地址</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjcsoil2j31c00u0k87.jpg" alt="image-20210519103857116"></p></li> <li><p>启动服务</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjdj241aj31c00u0twd.jpg" alt="image-20210519103938826"></p></li></ol> <blockquote><p>TIPS:</p> <p>项目启动完成后可以查看我们的项目接口文档了</p> <p>文档地址: http://127.0.0.1:8000/doc.html</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqnjggcoawj31l10u0wsz.jpg" alt="image-20210519104227504"></p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/handover/assets/js/app.0bd4e087.js" defer></script><script src="/handover/assets/js/2.40eece3a.js" defer></script><script src="/handover/assets/js/25.53623594.js" defer></script>
+  </body>
+</html>

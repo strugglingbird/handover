@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>seata部署 | 交接文档</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/handover/hero.svg">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/handover/assets/css/0.styles.f8d78339.css" as="style"><link rel="preload" href="/handover/assets/js/app.0bd4e087.js" as="script"><link rel="preload" href="/handover/assets/js/2.40eece3a.js" as="script"><link rel="preload" href="/handover/assets/js/28.7e031f1e.js" as="script"><link rel="prefetch" href="/handover/assets/js/10.272653f1.js"><link rel="prefetch" href="/handover/assets/js/11.742c26f2.js"><link rel="prefetch" href="/handover/assets/js/12.18bc48d7.js"><link rel="prefetch" href="/handover/assets/js/13.c69daf34.js"><link rel="prefetch" href="/handover/assets/js/14.f032ed61.js"><link rel="prefetch" href="/handover/assets/js/15.62f784ac.js"><link rel="prefetch" href="/handover/assets/js/16.eb5b5be5.js"><link rel="prefetch" href="/handover/assets/js/17.f8650417.js"><link rel="prefetch" href="/handover/assets/js/18.dfedbf20.js"><link rel="prefetch" href="/handover/assets/js/19.f7e0f19b.js"><link rel="prefetch" href="/handover/assets/js/20.3ea0f030.js"><link rel="prefetch" href="/handover/assets/js/21.6b415d81.js"><link rel="prefetch" href="/handover/assets/js/22.fe44f683.js"><link rel="prefetch" href="/handover/assets/js/23.35da1f9e.js"><link rel="prefetch" href="/handover/assets/js/24.e4da81e8.js"><link rel="prefetch" href="/handover/assets/js/25.53623594.js"><link rel="prefetch" href="/handover/assets/js/26.27a315c6.js"><link rel="prefetch" href="/handover/assets/js/27.2c96ed45.js"><link rel="prefetch" href="/handover/assets/js/29.e8295554.js"><link rel="prefetch" href="/handover/assets/js/3.dd08ab77.js"><link rel="prefetch" href="/handover/assets/js/30.7ea85f4b.js"><link rel="prefetch" href="/handover/assets/js/31.40c66dac.js"><link rel="prefetch" href="/handover/assets/js/32.94771c91.js"><link rel="prefetch" href="/handover/assets/js/33.baa8703b.js"><link rel="prefetch" href="/handover/assets/js/34.2fbd4503.js"><link rel="prefetch" href="/handover/assets/js/35.49bb5a1f.js"><link rel="prefetch" href="/handover/assets/js/36.ca6640bf.js"><link rel="prefetch" href="/handover/assets/js/37.dc0cb2f1.js"><link rel="prefetch" href="/handover/assets/js/4.a98ae983.js"><link rel="prefetch" href="/handover/assets/js/5.3222be7e.js"><link rel="prefetch" href="/handover/assets/js/6.2f528cd8.js"><link rel="prefetch" href="/handover/assets/js/7.e7c21d4d.js"><link rel="prefetch" href="/handover/assets/js/8.dac3de63.js"><link rel="prefetch" href="/handover/assets/js/9.50eac6c0.js">
+    <link rel="stylesheet" href="/handover/assets/css/0.styles.f8d78339.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/handover/" class="home-link router-link-active"><!----> <span class="site-name">交接文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link router-link-active">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link router-link-active">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>seata部署</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/handover/04/07/#部署配置文件" class="sidebar-link">部署配置文件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/handover/04/07/#部署应用" class="sidebar-link">部署应用</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="seata部署"><a href="#seata部署" class="header-anchor">#</a> seata部署</h1> <h2 id="部署配置文件"><a href="#部署配置文件" class="header-anchor">#</a> 部署配置文件</h2> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxevu050j315q0u0tgv.jpg" alt="image-20210528102058926"></p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxfhzptwj31mv0u0q7w.jpg" alt="image-20210528102135016"></p> <div class="language-nginx line-numbers-mode"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">registry</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">type</span> = <span class="token string">&quot;nacos&quot;</span>
+    nacos</span> <span class="token punctuation">{</span>
+      cluster = &quot;default&quot;
+      namespace = &quot;903b3e07-ae29-431f-95ce-ab565c5faf28&quot;
+      username = &quot;nacos&quot;
+      password = &quot;jsyk@123&quot;
+      application = &quot;seata-server&quot;
+      serverAddr = &quot;nacos-server.global:8848&quot;
+      group = &quot;SEATA_GROUP&quot;
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token directive"><span class="token keyword">config</span></span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">type</span> = <span class="token string">&quot;nacos&quot;</span>
+  nacos</span> <span class="token punctuation">{</span>
+    cluster = &quot;default&quot;
+    namespace = &quot;903b3e07-ae29-431f-95ce-ab565c5faf28&quot;
+    username = &quot;nacos&quot;
+    password = &quot;jsyk@123&quot;
+    serverAddr = &quot;nacos-server.global:8848&quot;
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h2 id="部署应用"><a href="#部署应用" class="header-anchor">#</a> 部署应用</h2> <p>镜像配置:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>seataio/seata-server:1.3.0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxhrzuhjj31zk0f0jt5.jpg" alt="image-20210528102346739"></p> <p>端口配置:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token number">8091</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxximj404j31xq09ugmu.jpg" alt="image-20210528102435224"></p> <p>环境变量配置:</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token assign-left variable">SEATA_CONFIG_NAME</span><span class="token operator">=</span>file:/root/seata-config/registry
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxj6xxo4j31wa0iyju5.jpg" alt="image-20210528102508139"></p> <p>数据卷配置:</p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxl6l5hij31tp0u0q7a.jpg" alt="image-20210528102702941"></p> <p><img src="https://tva1.sinaimg.cn/large/008i3skNgy1gqxxk92jwij31w50u0adp.jpg" alt="image-20210528102609192"></p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/handover/assets/js/app.0bd4e087.js" defer></script><script src="/handover/assets/js/2.40eece3a.js" defer></script><script src="/handover/assets/js/28.7e031f1e.js" defer></script>
+  </body>
+</html>

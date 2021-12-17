@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用rancher搭建kubenetes高可用集群 | 交接文档</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/handover/hero.svg">
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/handover/assets/css/0.styles.f8d78339.css" as="style"><link rel="preload" href="/handover/assets/js/app.0bd4e087.js" as="script"><link rel="preload" href="/handover/assets/js/2.40eece3a.js" as="script"><link rel="preload" href="/handover/assets/js/9.50eac6c0.js" as="script"><link rel="prefetch" href="/handover/assets/js/10.272653f1.js"><link rel="prefetch" href="/handover/assets/js/11.742c26f2.js"><link rel="prefetch" href="/handover/assets/js/12.18bc48d7.js"><link rel="prefetch" href="/handover/assets/js/13.c69daf34.js"><link rel="prefetch" href="/handover/assets/js/14.f032ed61.js"><link rel="prefetch" href="/handover/assets/js/15.62f784ac.js"><link rel="prefetch" href="/handover/assets/js/16.eb5b5be5.js"><link rel="prefetch" href="/handover/assets/js/17.f8650417.js"><link rel="prefetch" href="/handover/assets/js/18.dfedbf20.js"><link rel="prefetch" href="/handover/assets/js/19.f7e0f19b.js"><link rel="prefetch" href="/handover/assets/js/20.3ea0f030.js"><link rel="prefetch" href="/handover/assets/js/21.6b415d81.js"><link rel="prefetch" href="/handover/assets/js/22.fe44f683.js"><link rel="prefetch" href="/handover/assets/js/23.35da1f9e.js"><link rel="prefetch" href="/handover/assets/js/24.e4da81e8.js"><link rel="prefetch" href="/handover/assets/js/25.53623594.js"><link rel="prefetch" href="/handover/assets/js/26.27a315c6.js"><link rel="prefetch" href="/handover/assets/js/27.2c96ed45.js"><link rel="prefetch" href="/handover/assets/js/28.7e031f1e.js"><link rel="prefetch" href="/handover/assets/js/29.e8295554.js"><link rel="prefetch" href="/handover/assets/js/3.dd08ab77.js"><link rel="prefetch" href="/handover/assets/js/30.7ea85f4b.js"><link rel="prefetch" href="/handover/assets/js/31.40c66dac.js"><link rel="prefetch" href="/handover/assets/js/32.94771c91.js"><link rel="prefetch" href="/handover/assets/js/33.baa8703b.js"><link rel="prefetch" href="/handover/assets/js/34.2fbd4503.js"><link rel="prefetch" href="/handover/assets/js/35.49bb5a1f.js"><link rel="prefetch" href="/handover/assets/js/36.ca6640bf.js"><link rel="prefetch" href="/handover/assets/js/37.dc0cb2f1.js"><link rel="prefetch" href="/handover/assets/js/4.a98ae983.js"><link rel="prefetch" href="/handover/assets/js/5.3222be7e.js"><link rel="prefetch" href="/handover/assets/js/6.2f528cd8.js"><link rel="prefetch" href="/handover/assets/js/7.e7c21d4d.js"><link rel="prefetch" href="/handover/assets/js/8.dac3de63.js">
+    <link rel="stylesheet" href="/handover/assets/css/0.styles.f8d78339.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/handover/" class="home-link router-link-active"><!----> <span class="site-name">交接文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link router-link-active">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/handover/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/handover/01/" class="nav-link">
+  服务器相关
+</a></div><div class="nav-item"><a href="/handover/02/" class="nav-link">
+  代码相关
+</a></div><div class="nav-item"><a href="/handover/03/" class="nav-link router-link-active">
+  运维相关
+</a></div><div class="nav-item"><a href="/handover/04/" class="nav-link">
+  其他
+</a></div> <a href="https://github.com/strugglingbird/handover" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>使用rancher搭建kubenetes高可用集群</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/handover/03/01/#配置清单" class="sidebar-link">配置清单</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/handover/03/01/#环境初始化" class="sidebar-link">环境初始化</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/handover/03/01/#配置lb节点" class="sidebar-link">配置lb节点</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/03/01/#预先准备" class="sidebar-link">预先准备</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#安装nginx" class="sidebar-link">安装nginx</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#安装kukectl" class="sidebar-link">安装kukectl</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#安装helm" class="sidebar-link">安装helm</a></li></ul></li><li><a href="/handover/03/01/#开始安装k8s集群" class="sidebar-link">开始安装k8s集群</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/03/01/#rke-节点通用选项" class="sidebar-link">RKE 节点通用选项</a></li></ul></li><li><a href="/handover/03/01/#安装rancher" class="sidebar-link">安装Rancher</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/03/01/#安装方式选择" class="sidebar-link">安装方式选择</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#方案一-由rancher生成证书安装" class="sidebar-link">方案一：由Rancher生成证书安装</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#方案二-用自己已有的证书安装" class="sidebar-link">方案二：用自己已有的证书安装</a></li><li class="sidebar-sub-header"><a href="/handover/03/01/#运行" class="sidebar-link">运行</a></li></ul></li><li><a href="/handover/03/01/#遇到的问题" class="sidebar-link">遇到的问题</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/handover/03/01/#运维" class="sidebar-link">运维</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/handover/03/01/#更新证书" class="sidebar-link">更新证书</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用rancher搭建kubenetes高可用集群"><a href="#使用rancher搭建kubenetes高可用集群" class="header-anchor">#</a> 使用rancher搭建kubenetes高可用集群</h1> <h2 id="配置清单"><a href="#配置清单" class="header-anchor">#</a> 配置清单</h2> <table><thead><tr><th style="text-align:left;">hostname</th> <th style="text-align:left;">ip</th> <th style="text-align:left;">配置</th></tr></thead> <tbody><tr><td style="text-align:left;">rancher-lb</td> <td style="text-align:left;">192.168.0.80</td> <td style="text-align:left;">2核2G</td></tr> <tr><td style="text-align:left;">rancher-node1</td> <td style="text-align:left;">192.168.0.81</td> <td style="text-align:left;">2核4G</td></tr> <tr><td style="text-align:left;">rancher-node2</td> <td style="text-align:left;">192.168.0.82</td> <td style="text-align:left;">2核4G</td></tr> <tr><td style="text-align:left;">rancher-node3</td> <td style="text-align:left;">192.168.0.83</td> <td style="text-align:left;">2核4G</td></tr></tbody></table> <blockquote><p>以上配置为最低要求配置，实际情况可按需求添加配置或伸缩节点，rancher-node最少可为1个节点，其中安装etcd节点最好为奇数节点，否则会出现脑裂。</p></blockquote> <h2 id="环境初始化"><a href="#环境初始化" class="header-anchor">#</a> 环境初始化</h2> <p>所有机器都要执行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 关闭防火墙</span>
+systemctl stop firewalld
+systemctl disable firewalld
+
+<span class="token comment"># 关闭selinux</span>
+<span class="token function">sed</span> -i <span class="token string">'s/enforcing/disabled/'</span> /etc/selinux/config  <span class="token comment"># 永久</span>
+setenforce <span class="token number">0</span>  <span class="token comment"># 临时</span>
+
+<span class="token comment"># 关闭swap</span>
+swapoff -a  <span class="token comment"># 临时</span>
+<span class="token function">sed</span> -ri <span class="token string">'s/.*swap.*/#&amp;/'</span> /etc/fstab    <span class="token comment"># 永久</span>
+
+<span class="token comment"># 根据规划设置主机名</span>
+hostnamectl set-hostname k8s-master1
+
+yum <span class="token function">install</span> <span class="token function">wget</span> <span class="token function">vim</span> -y
+
+<span class="token comment"># 修改yum源</span>
+<span class="token builtin class-name">cd</span> /etc/yum.repos.d/ 
+
+<span class="token function">wget</span> http://mirrors.163.com/.help/CentOS7-Base-163.repo
+
+<span class="token function">mv</span> CentOS-Base.repo CentOS-Base.repo.bak
+
+<span class="token function">mv</span> CentOS7-Base-163.repo CentOS-Base.repo
+
+<span class="token comment"># 配置kubernetes源</span>
+
+<span class="token function">cat</span> <span class="token operator">&lt;&lt;</span><span class="token string">EOF<span class="token bash punctuation"> <span class="token operator">&gt;</span> /etc/yum.repos.d/kubernetes.repo</span>
+[kubernetes]
+name=Kubernetes
+baseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64
+enabled=1
+gpgcheck=0
+repo_gpgcheck=0
+gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg
+       http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
+EOF</span>
+
+yum clean all 
+
+yum makecache 
+
+yum update -y
+
+<span class="token comment"># 安装docker</span>
+<span class="token comment"># step 1: 安装必要的一些系统工具</span>
+<span class="token function">sudo</span> yum <span class="token function">install</span> -y yum-utils device-mapper-persistent-data lvm2
+<span class="token comment"># Step 2: 添加软件源信息</span>
+<span class="token function">sudo</span> yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+<span class="token comment"># Step 3: 更新并安装 Docker-CE</span>
+<span class="token function">sudo</span> yum makecache fast
+
+yum -y <span class="token function">install</span> docker-ce-19.03.12-3.el7
+<span class="token comment"># Step 4: 开启Docker服务</span>
+systemctl start docker
+systemctl <span class="token builtin class-name">enable</span> docker
+
+<span class="token comment"># 修改docker镜像源</span>
+<span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/docker
+<span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;-</span><span class="token string">'EOF'
+{
+  &quot;data-root&quot;: &quot;/home/docker&quot;,
+  &quot;registry-mirrors&quot;: [&quot;https://q8tek117.mirror.aliyuncs.com&quot;]
+}
+EOF</span>
+
+<span class="token comment"># 启动docker</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart docker
+<span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> docker
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br></div></div><h4 id="授权lb节点免密登陆其他节点"><a href="#授权lb节点免密登陆其他节点" class="header-anchor">#</a> 授权lb节点免密登陆其他节点</h4> <p>Lb 节点执行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 生成私钥和公钥，一路回车</span>
+ssh-keygen -t rsa -b <span class="token number">4096</span>
+
+<span class="token comment"># 分发公钥到其他节点</span>
+ssh-copy-id -i root@192.168.100.81
+ssh-copy-id -i root@192.168.100.82
+ssh-copy-id -i root@192.168.100.83
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h4 id="添加用户"><a href="#添加用户" class="header-anchor">#</a> 添加用户</h4> <p>非lb的其他节点执行</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 添加docker用户并添加至docker用户组</span>
+<span class="token function">useradd</span> -g docker docker
+<span class="token function">cp</span> -r /root/.ssh /home/docker/
+<span class="token function">chown</span> -R docker:docker /home/docker/.ssh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><blockquote><p><strong>注意:</strong> 这个步骤一定不能与上个步骤顺序执行相反，否则docker用户无法免密登陆</p></blockquote> <h2 id="配置lb节点"><a href="#配置lb节点" class="header-anchor">#</a> 配置lb节点</h2> <p>该节点不是必须节点，云厂商可以使用负载均衡器</p> <h3 id="预先准备"><a href="#预先准备" class="header-anchor">#</a> 预先准备</h3> <h4 id="上传安装文件-rke、helm、cert-manager"><a href="#上传安装文件-rke、helm、cert-manager" class="header-anchor">#</a> 上传安装文件（rke、helm、cert-manager）</h4> <p>链接: https://pan.baidu.com/s/1N_tJ9aNsr-O6jd5OtlnvUw  密码: q68u</p> <p>下载后并上传</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token punctuation">[</span>root@rke-lb rke-install<span class="token punctuation">]</span><span class="token comment"># pwd</span>
+/root/rke-install
+<span class="token punctuation">[</span>root@rke-lb rke-install<span class="token punctuation">]</span><span class="token comment"># ls</span>
+cert-manager  helm-v3.3.0-linux-amd64.tar.gz  rke_linux-amd64
+<span class="token comment"># 将镜像分发到其他镜像，待其他节点安装</span>
+<span class="token builtin class-name">cd</span> cert-manager
+<span class="token function">scp</span> cert-manager*.gz root@192.168.100.81:
+<span class="token function">scp</span> cert-manager*.gz root@192.168.100.82:
+<span class="token function">scp</span> cert-manager*.gz root@192.168.100.83:
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><h3 id="安装nginx"><a href="#安装nginx" class="header-anchor">#</a> 安装nginx</h3> <div class="language-nginx line-numbers-mode"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">rpm</span> -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+yum install nginx -y
+
+<span class="token comment"># 编辑配置文件</span>
+rm -rf /etc/nginx/nginx.conf
+vi /etc/nginx/nginx.conf
+
+
+worker_processes <span class="token number">4</span></span><span class="token punctuation">;</span>
+<span class="token directive"><span class="token keyword">worker_rlimit_nofile</span> <span class="token number">40000</span></span><span class="token punctuation">;</span>
+ 
+<span class="token directive"><span class="token keyword">events</span></span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">worker_connections</span> <span class="token number">8192</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+ 
+<span class="token directive"><span class="token keyword">stream</span></span> <span class="token punctuation">{</span>
+  <span class="token directive"><span class="token keyword">upstream</span> rancher_servers_http</span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">least_conn</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.81:80 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.82:80 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.83:80 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>     <span class="token number">80</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">proxy_pass</span> rancher_servers_http</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+ 
+  <span class="token directive"><span class="token keyword">upstream</span> rancher_servers_https</span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">least_conn</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.81:443 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.82:443 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server</span> 192.168.100.83:443 max_fails=3 fail_timeout=5s</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span>     <span class="token number">443</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">proxy_pass</span> rancher_servers_https</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment"># 启动nginx</span>
+sudo systemctl daemon-reload
+sudo systemctl restart nginx
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><h3 id="安装kukectl"><a href="#安装kukectl" class="header-anchor">#</a> 安装kukectl</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>yum <span class="token function">install</span> kubectl -y
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h3 id="安装helm"><a href="#安装helm" class="header-anchor">#</a> 安装helm</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /root/rke-install
+
+<span class="token function">tar</span> -zxvf  helm-v3.2.4-linux-amd64.tar.gz
+
+<span class="token function">mv</span> linux-amd64/helm /usr/local/bin
+
+<span class="token comment"># 添加 Helm Chart 仓库</span>
+helm repo <span class="token function">add</span> rancher-stable https://releases.rancher.com/server-charts/stable
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br></div></div><h2 id="开始安装k8s集群"><a href="#开始安装k8s集群" class="header-anchor">#</a> 开始安装k8s集群</h2> <p>以下操作均在lb节点上执行</p> <h4 id="编辑配置文件-并保存命名为rancher-cluster-yml"><a href="#编辑配置文件-并保存命名为rancher-cluster-yml" class="header-anchor">#</a> 编辑配置文件，并保存命名为<code>rancher-cluster.yml</code></h4> <p>将<code>nodes</code>列表中的<code>address</code>和<code>internal_address</code> 替换为您创建的 3 个节点的 IP 地址或 DNS 名称</p> <div class="language-yaml line-numbers-mode"><pre class="language-yaml"><code><span class="token key atrule">nodes</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">address</span><span class="token punctuation">:</span> 192.168.100.81
+    <span class="token key atrule">internal_address</span><span class="token punctuation">:</span> 192.168.100.81
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> docker
+    <span class="token key atrule">role</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>controlplane<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> etcd<span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">address</span><span class="token punctuation">:</span> 192.168.100.82
+    <span class="token key atrule">internal_address</span><span class="token punctuation">:</span> 192.168.100.82
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> docker
+    <span class="token key atrule">role</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>controlplane<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> etcd<span class="token punctuation">]</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">address</span><span class="token punctuation">:</span> 192.168.100.83
+    <span class="token key atrule">internal_address</span><span class="token punctuation">:</span> 192.168.100.83
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> docker
+    <span class="token key atrule">role</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>controlplane<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> etcd<span class="token punctuation">]</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">etcd</span><span class="token punctuation">:</span>
+    <span class="token key atrule">snapshot</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">creation</span><span class="token punctuation">:</span> 6h
+    <span class="token key atrule">retention</span><span class="token punctuation">:</span> 24h
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><blockquote><p>TIPS:</p> <p>如果在执行上面的命令之前检查过命令的话会发现三台node都创建了一个名为docker的用户，并且用户组为docker，这是因为centos的docker是以root用户运行的，但rke的安装不能用root用户来执行命令。所以需要建立一个用户，并将其加入docker组，而这个用户可以实其他名字而不一定为docker</p> <p><strong>注意事项:</strong> 如果您的节点具有公网和内网地址，建议在<code>internal_address</code>一栏输入内网地址，以便 Kubernetes 将其用于集群内部通信。如果使用自身安全组或防火墙，则某些云服务供应商强制要求设置 <code>internal_address:</code></p> <h3 id="rke-节点通用选项"><a href="#rke-节点通用选项" class="header-anchor">#</a> RKE 节点通用选项</h3> <table><thead><tr><th>选项</th> <th>是否必选</th> <th>描述</th></tr></thead> <tbody><tr><td><code>address</code></td> <td>是</td> <td>公共 DNS 或 IP 地址</td></tr> <tr><td><code>user</code></td> <td>是</td> <td>可以执行 docker 命令的用户</td></tr> <tr><td><code>role</code></td> <td>是</td> <td>给节点分配的 Kubernetes 角色列表</td></tr> <tr><td><code>internal_address</code></td> <td>否</td> <td>给集群内部流量使用的私有 DNS 或者 IP 地址</td></tr> <tr><td><code>ssh_key_path</code></td> <td>否</td> <td>用来登录节点的 SSH 私钥路径 ，默认值为 <code>~/.ssh/id_rsa</code></td></tr></tbody></table></blockquote> <h4 id="运行-rke"><a href="#运行-rke" class="header-anchor">#</a> 运行 RKE</h4> <p>输入以下命令，运行 RKE 节点。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /root/rke-install
+<span class="token function">mv</span> rke_linux-amd64 rke
+<span class="token function">chmod</span> +x rke
+./rke up --config ./rancher-cluster.yml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>运行结束后返回 <code>Finished building Kubernetes cluster successfully</code>，表示正常运行。</p> <h4 id="存放kubectl配置文件"><a href="#存放kubectl配置文件" class="header-anchor">#</a> 存放kubectl配置文件</h4> <p>接下来要将kube_config_rancher-cluster.yml放置到指定位置，使kubectl能够正常访问kubenetes集群</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token environment constant">$HOME</span>/.kube <span class="token operator">&amp;&amp;</span> <span class="token function">cp</span> kube_config_rancher-cluster.yml <span class="token environment constant">$HOME</span>/.kube/config
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>验证并检查所有Pods的情况</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl get pods --all-namespaces
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><h2 id="安装rancher"><a href="#安装rancher" class="header-anchor">#</a> 安装Rancher</h2> <h3 id="安装方式选择"><a href="#安装方式选择" class="header-anchor">#</a> 安装方式选择</h3> <p>Rancher安装默认需要 SSL/TLS 配置来保证访问的安全性，因此在安装前需要确定你使用哪一种证书安装方式，一般由以下2种证书安装方式，两种方式2选1即可。</p> <ul><li>方案一： 由Rancher生成证书安装</li> <li>方案二： 用自己已有的证书安装</li></ul> <p>方案对比：</p> <table><thead><tr><th>设置</th> <th>Chart 选项</th> <th>描述</th> <th>是否需要 cert-manager</th></tr></thead> <tbody><tr><td><a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/_index#rancher-%E8%87%AA%E7%AD%BE%E5%90%8D%E8%AF%81%E4%B9%A6" target="_blank" rel="noopener noreferrer">Rancher 自签名证书<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><code>ingress.tls.source=rancher</code></td> <td>使用 Rancher 生成的 CA 签发的自签名证书 此项为<strong>默认选项</strong></td> <td><a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/_index#%E9%80%89%E8%A3%85%EF%BC%9A%E5%AE%89%E8%A3%85-cert-manager" target="_blank" rel="noopener noreferrer">是<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td><a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/_index#lets-encrypt" target="_blank" rel="noopener noreferrer">Let’s Encrypt<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><code>ingress.tls.source=letsEncrypt</code></td> <td>使用<a href="https://letsencrypt.org/" target="_blank" rel="noopener noreferrer">Let's Encrypt<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>颁发的证书</td> <td><a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/_index#%E9%80%89%E8%A3%85%EF%BC%9A%E5%AE%89%E8%A3%85-cert-manager" target="_blank" rel="noopener noreferrer">是<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td></tr> <tr><td><a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/_index#%E6%82%A8%E5%B7%B2%E6%9C%89%E7%9A%84%E8%AF%81%E4%B9%A6" target="_blank" rel="noopener noreferrer">您已有的证书<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></td> <td><code>ingress.tls.source=secret</code></td> <td>使用您的已有证书（Kubernetes 密文）</td> <td>否</td></tr></tbody></table> <blockquote><p>仅由 Rancher 生成的 CA <code>ingress.tls.source=rancher</code> 和 Let's Encrypt 颁发的证书 <code>ingress.tls.source=letsEncrypt</code> 才需要 cert-manager。如果您使用自己的证书文件 <code>ingress.tls.source=secret</code> 或者<a href="https://rancher2.docs.rancher.cn/docs/installation/options/helm2/helm-rancher/chart-options/_index#%E5%A4%96%E9%83%A8-tls-termination" target="_blank" rel="noopener noreferrer">使用外部 TLS 负载均衡器<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>可以不需要[安装cert-manager](#安装 cert-manager)。</p></blockquote> <h3 id="方案一-由rancher生成证书安装"><a href="#方案一-由rancher生成证书安装" class="header-anchor">#</a> 方案一：由Rancher生成证书安装</h3> <h4 id="安装-cert-manager"><a href="#安装-cert-manager" class="header-anchor">#</a> 安装 cert-manager</h4> <ul><li><p>单独安装 CustomResourceDefinition 资源</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl apply -f cert-manager.crds.yaml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>为 cert-manager 创建命名空间</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl create namespace cert-manager
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>标记 cert-manager 命名空间，禁用资源验证</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl label namespace cert-manager certmanager.k8s.io/disable-validation<span class="token operator">=</span>true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>添加 Jetstack Helm repository</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>helm repo <span class="token function">add</span> jetstack https://charts.jetstack.io
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>更新本地的 Helm chart repository 缓存</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>helm repo update
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></li> <li><p>加载helm安装cert-manager时所需要的docker镜像</p> <p>在所有非lb节点执行以下命令，如果是科学上网可忽略此步骤</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>docker load -i cert-manager-webhook.tar.gz
+
+docker load -i cert-manager-cainjector.tar.gz
+
+docker load -i cert-manager.tar.gz
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li> <li><p>使用 Helm chart 安装 cert-manager</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>helm <span class="token function">install</span> <span class="token punctuation">\</span>
+  cert-manager <span class="token punctuation">\</span>
+  jetstack/cert-manager <span class="token punctuation">\</span>
+  --namespace cert-manager <span class="token punctuation">\</span>
+  --version v0.13.0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div></li> <li><p>安装 cert-manager 以后，您可以通过检查 cert-manager 命名空间下的 pod 运行状态来验证部署是否正确：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl get pods --namespace cert-manager
+
+NAME                                            READY   STATUS      RESTARTS   AGE
+cert-manager-7cbdc48784-rpgnt                   <span class="token number">1</span>/1     Running     <span class="token number">0</span>          3m
+cert-manager-webhook-5b5dd6999-kst4x            <span class="token number">1</span>/1     Running     <span class="token number">0</span>          3m
+cert-manager-cainjector-3ba5cd2bcd-de332x       <span class="token number">1</span>/1     Running     <span class="token number">0</span>          3m
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></li></ul> <h4 id="rancher安装"><a href="#rancher安装" class="header-anchor">#</a> rancher安装</h4> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 创建命名空间</span>
+kubectl create namespace cattle-system
+
+<span class="token comment"># 安装</span>
+helm <span class="token function">install</span> <span class="token punctuation">\</span>
+  rancher <span class="token punctuation">\</span>
+  rancher-stable/rancher <span class="token punctuation">\</span>
+  --namespace cattle-system <span class="token punctuation">\</span>
+  --set <span class="token assign-left variable">hostname</span><span class="token operator">=</span>k8s.ecolovo.icu
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><blockquote><p>TIPS:</p> <p>将hostname替换成解析道lb节点的域名地址</p></blockquote> <h3 id="方案二-用自己已有的证书安装"><a href="#方案二-用自己已有的证书安装" class="header-anchor">#</a> 方案二：用自己已有的证书安装</h3> <h4 id="添加-kubernetes-tls-密文"><a href="#添加-kubernetes-tls-密文" class="header-anchor">#</a> 添加 Kubernetes TLS 密文</h4> <p><strong>申请颁发证书</strong></p> <p>阿里云证书一般选择下载tomcat类型证书，下载解压后会得到<code>xxx_domain.pfx</code>和<code>pfx-password.txt</code></p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token comment"># 转换证书得到pem证书，执行该命令时需要输入pfx-password.tx中的密码</span>
+openssl pkcs12 -in xxx_domain.pfx -nodes -out cacerts.pem
+
+openssl rsa -in cacerts.pem -out tls.key
+openssl x509 -in cacerts.pem -out tls.crt
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>使用 <code>kubectl</code> 来创建 <code>tls</code> 类型的密文。</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>kubectl -n cattle-system create secret tls tls-rancher-ingress \
+  --cert=tls.crt \
+  --key=tls.key
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><blockquote><p><strong>提示：</strong> 如果您想要更换证书，您可以使用 <code>kubectl -n cattle-system delete secret tls-rancher-ingress</code> 来删除 <code>tls-rancher-ingress</code> 密文，之后使用上面的命令创建一个新的密文。如果您使用的是私有 CA 签发的证书，仅当新证书与当前证书是由同一个 CA 签发的，才可以替换。</p></blockquote> <p><strong>提供 CA 证书的副本</strong></p> <p>如果您使用的是私有 CA，Rancher 需要您提供 CA 证书的副本，用来校验 Rancher Agent 与 Server 的连接。</p> <p>拷贝 CA 证书到名为 cacerts.pem 的文件，使用 kubectl 命令在 cattle-system 命名空间中创建名为 tls-ca 的密文。</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl -n cattle-system create secret generic tls-ca <span class="token punctuation">\</span>
+  --from-file<span class="token operator">=</span>cacerts.pem<span class="token operator">=</span>./cacerts.pem
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="rancher安装-2"><a href="#rancher安装-2" class="header-anchor">#</a> rancher安装</h4> <p>如果您使用的是私有CA证书，请在命令中增加 <code>--set privateCA=true</code>：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>helm <span class="token function">install</span> <span class="token punctuation">\</span>
+  rancher <span class="token punctuation">\</span>
+  rancher-stable/rancher <span class="token punctuation">\</span>
+  --namespace cattle-system <span class="token punctuation">\</span>
+  --set <span class="token assign-left variable">hostname</span><span class="token operator">=</span>k8s.ecolovo.icu <span class="token punctuation">\</span>
+  --set ingress.tls.source<span class="token operator">=</span>secret <span class="token punctuation">\</span>
+  --set <span class="token assign-left variable">privateCA</span><span class="token operator">=</span>true
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h3 id="运行"><a href="#运行" class="header-anchor">#</a> 运行</h3> <p>输入地址：https://rancher.my.org</p> <p>修改密码：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>kubectl -n cattle-system <span class="token builtin class-name">exec</span> <span class="token variable"><span class="token variable">$(</span>kubectl -n cattle-system get pods -l <span class="token assign-left variable">app</span><span class="token operator">=</span>rancher <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">'1/1'</span> <span class="token operator">|</span> <span class="token function">head</span> -1 <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'{ print $1 }'</span><span class="token variable">)</span></span> -- reset-password
+New password <span class="token keyword">for</span> default administrator <span class="token punctuation">(</span>user-xxxxx<span class="token punctuation">)</span>:
+<span class="token operator">&lt;</span>new_password<span class="token operator">&gt;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="遇到的问题"><a href="#遇到的问题" class="header-anchor">#</a> 遇到的问题</h2> <p>问题一：</p> <p>安装时报错：</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>FATA<span class="token punctuation">[</span>0215<span class="token punctuation">]</span> Failed to get job complete status <span class="token keyword">for</span> job rke-network-plugin-deploy-job <span class="token keyword">in</span> namespace kube-system
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>遇到这个问题，重新执行<code>./rke up --config ./rancher-cluster.yml</code>即可</p> <h2 id="运维"><a href="#运维" class="header-anchor">#</a> 运维</h2> <h3 id="更新证书"><a href="#更新证书" class="header-anchor">#</a> 更新证书</h3> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code>./rke cert rotate --config ./rancher-cluster.yml
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/handover/assets/js/app.0bd4e087.js" defer></script><script src="/handover/assets/js/2.40eece3a.js" defer></script><script src="/handover/assets/js/9.50eac6c0.js" defer></script>
+  </body>
+</html>
